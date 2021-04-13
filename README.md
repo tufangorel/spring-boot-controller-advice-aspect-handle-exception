@@ -20,7 +20,7 @@ junit <br/>
 <br/>
 
 ## API OPERATIONS
-### Save Customer sucessfully into database
+### Save customer sucessfully to database
 
 Method : HTTP.POST <br/>
 URL : http://localhost:8080/customer/save <br/>
@@ -56,7 +56,7 @@ HTTP response code 200 <br/>
 }
 </pre><br/>
 
-### Create exception and trigger @AfterThrowing aspect.
+### Create exception and trigger @AfterThrowing aspect. Insert log message into log table. 
 
 Method : HTTP.POST <br/>
 URL : http://localhost:8080/customer/save <br/>
