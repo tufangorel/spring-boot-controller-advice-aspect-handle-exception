@@ -69,6 +69,8 @@ Request :
 }
 </pre><br/>
 
+Response :
+
 HTTP response code 500 <br/>
 <pre>
 {
