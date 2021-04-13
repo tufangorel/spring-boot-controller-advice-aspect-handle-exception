@@ -1,6 +1,8 @@
 package com.company.customerinfo.config.aspect;
 
 
+import com.company.customerinfo.model.Log;
+import com.company.customerinfo.service.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -10,6 +12,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
@@ -18,6 +21,9 @@ import org.springframework.util.StopWatch;
 public class LoggingAspect {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LoggingAspect.class);
+
+    @Autowired
+    private LogService logService;
 
     @Around("execution(* com.company.customerinfo.service.*.*(..))")
     public Object analyzeMethodExecutionTimes(ProceedingJoinPoint proceedingJoinPoint) throws Throwable
@@ -61,6 +67,10 @@ public class LoggingAspect {
         // Log the exception message
         LOGGER.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(), ex.getCause() != null ? ex.getCause() : "NULL");
+
+        Log log = new Log();
+        log.setMessage(ex.getCause().toString());
+        logService.save(log);
     }
 
 }
