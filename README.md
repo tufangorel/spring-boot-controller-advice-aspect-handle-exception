@@ -1,6 +1,6 @@
 ## spring-boot-controller-advice-aspect-handle-exception
 
-1- Log exception occurs at service layer to the database log table from @AfterThrowing aspect.<br/>
+1- Log exception occurs at service layer to the database log table from @AfterThrowing advice.<br/>
 2- Show a meaningful error message to the client by using @RestControllerAdvice.<br/>
 
 ### Run with
